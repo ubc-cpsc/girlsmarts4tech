@@ -20,7 +20,7 @@ This repo contains the lesson plan for GIRLsmarts4tech 2018 Programming Activity
 
 ## Copyright
 
-Authors: Mandy Chen (@42mandychen), Sherry Yuan (@frostyshadows).
+Authors: [Mandy Chen](https://github.com/42mandychen), [Sherry Yuan](https://github.com/frostyshadows).
 
 Copyright 2017 - 2018 UBC Computer Science GIRLsmarts4tech.
 
