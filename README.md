@@ -17,3 +17,11 @@ This repo contains the lesson plan for GIRLsmarts4tech 2018 Programming Activity
     The files are in this repo too: [index.html](./starter/index.html), and [canvas.js](./starter/canvas.js). The only difference is with Codepen, the JavaScript file link does not need to be linked whereas the html file in this repo is [linked to the js file](./starter/index.html#L4).
 
   - Completed: https://codepen.io/42mandychen/pen/rzmRqz?editors=0010 (only a template now).
+
+## Copyright
+
+Authors: Mandy Chen (@42mandychen), Sherry Yuan (@frostyshadows).
+
+Copyright 2017 - 2018 UBC Computer Science GIRLsmarts4tech.
+
+Licensed under the [MIT License](./license).

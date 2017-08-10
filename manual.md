@@ -4,25 +4,22 @@ This exercise manual is used to help girls continue working on the programming p
 
 <details>
 <summary><strong>Table of Contents</strong></summary>
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Activity Manual](#activity-manual)
-	- [Important Safety Note](#important-safety-note)
-	- [Set Up Codepen](#set-up-codepen)
-		- [Create an HTML webpage using Notepad](#create-an-html-webpage-using-notepad)
-	- [HTML Fundamentals](#html-fundamentals)
-		- [Basics](#basics)
-		- [HTML Tags](#html-tags)
-		- [Tag Attributes](#tag-attributes)
-	- [Images and Hyperlinks](#images-and-hyperlinks)
-		- [Insert an image into your webpage](#insert-an-image-into-your-webpage)
-		- [Link to another webpage](#link-to-another-webpage)
-		- [Add a Youtube video](#add-a-youtube-video)
-	- [Create a webpage using a template](#create-a-webpage-using-a-template)
-	- [Upload your webpage!](#upload-your-webpage)
-	- [Read more](#read-more)
+- [Important Safety Note](#important-safety-note)
+- [Set Up Codepen](#set-up-codepen)
+	- [Create an HTML webpage using Notepad](#create-an-html-webpage-using-notepad)
+- [HTML Fundamentals](#html-fundamentals)
+	- [Basics](#basics)
+	- [HTML Tags](#html-tags)
+	- [Tag Attributes](#tag-attributes)
+- [Images and Hyperlinks](#images-and-hyperlinks)
+	- [Insert an image into your webpage](#insert-an-image-into-your-webpage)
+	- [Link to another webpage](#link-to-another-webpage)
+	- [Add a Youtube video](#add-a-youtube-video)
+- [Create a webpage using a template](#create-a-webpage-using-a-template)
+- [Upload your webpage!](#upload-your-webpage)
+- [Read more](#read-more)
 
-<!-- /TOC -->
 </details>
 
 ## Important Safety Note
