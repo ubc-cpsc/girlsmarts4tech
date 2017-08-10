@@ -18,6 +18,8 @@ This repo contains the lesson plan for GIRLsmarts4tech 2018 Programming Activity
 
   - Completed: https://codepen.io/42mandychen/pen/rzmRqz?editors=0010 (only a template now).
 
+- [Additional Information](./additional.md): some behind-the-scene information about this activity.
+
 ## Copyright
 
 Authors: [Mandy Chen](https://github.com/42mandychen), [Sherry Yuan](https://github.com/frostyshadows).
