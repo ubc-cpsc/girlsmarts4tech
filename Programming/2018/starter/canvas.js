@@ -1,12 +1,25 @@
+var petImage;
+
+var petX = 200;
+var petY = 200;
+
+function preload() {
+  petImage = loadImage("images/panda.png");
+}
+  
+
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(400, 400);
+  imageMode(CENTER);
 }
 
 function draw() {
-  if (mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
-  }
-  ellipse(mouseX, mouseY, 80, 80);
+  background("lightblue");
+  image(petImage, petX, petY, 80, 70);
+}
+
+function keyTyped() {
+    if(key == 'w') {
+        petY = petY - 10;
+    }
 }
