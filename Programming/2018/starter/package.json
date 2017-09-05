@@ -1,0 +1,15 @@
+{
+  "name": "gs4tp2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "canvas.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
