@@ -2,6 +2,18 @@
 
 This README file explains the technologies used in this project.
 
+## Dependencies
+
+Make sure you're at this current folder, then run
+
+```bash
+
+$ npm install
+
+```
+
+to install all the dependencies.
+
 ## Server
 
 In order to load the images and display them on a page in a browser locally, we need a web server to serve the images. Otherwise, the images won't be served.
