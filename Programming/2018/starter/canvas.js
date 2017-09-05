@@ -1,12 +1,12 @@
-var petImage;
+let petImage;
 
-var petX = 200;
-var petY = 200;
+let petX = 200;
+let petY = 200;
 
 function preload() {
-  petImage = loadImage("images/panda.png");
+  petImage = loadImage("images/panda.jpeg");
 }
-  
+
 
 function setup() {
   createCanvas(400, 400);
@@ -19,7 +19,7 @@ function draw() {
 }
 
 function keyTyped() {
-    if(key == 'w') {
+    if(key === 'w') {
         petY = petY - 10;
     }
 }
