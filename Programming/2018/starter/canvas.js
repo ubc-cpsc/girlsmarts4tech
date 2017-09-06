@@ -4,7 +4,7 @@ let petX = 200;
 let petY = 200;
 
 function preload() {
-  petImage = loadImage("images/panda.jpeg");
+  petImage = loadImage("images/panda.png");
 }
 
 
