@@ -7,9 +7,7 @@ This README file explains the technologies used in this project.
 Make sure you're at this current folder, then run
 
 ```bash
-
 $ npm install
-
 ```
 
 to install all the dependencies.
@@ -21,9 +19,7 @@ In order to load the images and display them on a page in a browser locally, we 
 To start a server easily, we use [php's built-in server](http://php.net/manual/en/features.commandline.webserver.php). Make sure you cd to the directory that contains `index.html`, then run:
 
 ```bash
-
 $ php -S localhost:8888
-
 ```
 
 and go to [localhost:8888](localhost:8888) to view the page.
@@ -31,6 +27,13 @@ and go to [localhost:8888](localhost:8888) to view the page.
 ## ESLint
 
 ESLint can check code and issue warnings/errors for the parts that are error-prone. I've set up some linting rules that I see fit for the activity's purpose in [`.eslintrc`](./.eslintrc).
+
+## Develoment Environment
+
+[Atom](https://atom.io/), an open source text editor will be used. The plug-ins use are:
+
+- [atom-ternjs](https://atom.io/packages/atom-ternjs) for JavaScript auto code completion support,
+- [linter-eslint](https://atom.io/packages/linter-eslint) to run and display ESLint results.
 
 
 ## Copyright
