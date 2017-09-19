@@ -16,10 +16,8 @@ function setup() {
 function draw() {
   background("lightblue");
   image(petImage, petX, petY, 80, 70);
-}
-
-function keyTyped() {
-    if(key === 'w') {
-        petY = petY - 10;
-    }
+  
+  if(keyIsDown(UP_ARROW)) {
+      petY = petY - 2;
+  }
 }
