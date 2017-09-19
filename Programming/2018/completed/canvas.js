@@ -1,23 +1,23 @@
-let petImage;
-let foodImage;
+var petImage;
+var foodImage;
 
 // the pet coordinates, start in center of screen
-let petX = 200;
-let petY = 200;
+var petX = 200;
+var petY = 200;
 
 // the food coordinates being >400 means food is unavailable
-let foodX = 404;
-let foodY = 404;
+var foodX = 404;
+var foodY = 404;
 
-let life = 1000;
+var life = 1000;
 
 function preload() {
   // TODO: have some images downloaded and available for the girls to use
-  // teach them how to find and load their own if they have time (they probably won't)
+  // teach them how to set their own if they have time (they probably won't)
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
 }
-
+  
 
 function setup() {
   createCanvas(400, 400);
@@ -26,16 +26,33 @@ function setup() {
 
 function draw() {
   background("lightblue");
-
+  
+  // arrow keys for movement, r to restart
+  if(keyIsDown(UP_ARROW)) {
+      petY = petY - 2;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+      petY = petY + 2;
+  }
+  if(keyIsDown(LEFT_ARROW)) {
+      petX = petX - 2;
+  } 
+  if(keyIsDown(RIGHT_ARROW)) {
+      petX = petX + 2;
+  } 
+  if(keyIsDown(R_KEY) && life <= 0) {
+      life = 1000;
+  }
+  
   // write the "Life: " string
   fill("black");
   textSize(20);
   text("Life: ", 10, 27);
-
+   
   // update box showing amount of life left
   fill("lightgreen");
   rect(50, 10, life/10, 20);
-
+  
   // if life is <= 0, the game is over
   // otherwise update the pet's position
   if (life <= 0) {
@@ -45,33 +62,18 @@ function draw() {
     image(petImage, petX, petY, 80, 70);
     life = life - 1;
   }
-
+  
   // if the food is still available, draw it
   if (foodX <= 400 && foodY <= 400) {
     image(foodImage, foodX, foodY, 30, 50);
   }
-
+  
   // if the pet is near the food, give it more life and make the food disappear
   if (petNearFood(petX, petY, foodX, foodY)) {
     life = life + 250;
     foodX = 404;
     foodY = 404;
   }
-}
-
-// wasd for movement, r to restart
-function keyTyped() {
-    if(key === 'w') {
-        petY = petY - 10;
-    } else if(key === 's') {
-        petY = petY + 10;
-    } else if(key ==='a') {
-        petX = petX - 10;
-    } else if(key === 'd') {
-        petX = petX + 10;
-    } else if(key === 'r' && life <= 0) {
-        life = 1000;
-    }
 }
 
 // if there isn't food already available, put food where you click
@@ -86,6 +88,9 @@ function mousePressed() {
 function petNearFood(petX, petY, foodX, foodY) {
   return (petX < foodX + 20 && petX > foodX - 20 && petY < foodY + 20 && petY > foodY - 20);
 }
+
+// put in library. 'r''s key code is 82
+var R_KEY = 82;
 
 // have a list of colors that the girls can use (I can't find a complete list..._
 // "pink"
