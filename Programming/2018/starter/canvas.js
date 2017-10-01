@@ -7,7 +7,6 @@ function preload() {
   petImage = loadImage("images/panda.png");
 }
 
-
 function setup() {
   createCanvas(400, 400);
   imageMode(CENTER);
@@ -16,12 +15,12 @@ function setup() {
 function draw() {
   background("lightblue");
   image(petImage, petX, petY, 80, 70);
-  
-  if(keyIsDown(UP_ARROW)) {
-      goUp();
+
+  if (keyIsDown(UP_ARROW)) {
+    goUp();
   }
-  
+
   function goUp() {
-  petY = petY - 2;
-}
+    petY = petY - 2;
+  }
 }
