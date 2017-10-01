@@ -19,8 +19,8 @@ function draw() {
   if (keyIsDown(UP_ARROW)) {
     goUp();
   }
+}
 
-  function goUp() {
-    petY = petY - 2;
-  }
+function goUp() {
+  petY = petY - 2;
 }
