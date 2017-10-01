@@ -29,16 +29,16 @@ function draw() {
   
   // arrow keys for movement, r to restart
   if(keyIsDown(UP_ARROW)) {
-      petY = petY - 2;
+      goUp();
   }
   if (keyIsDown(DOWN_ARROW)) {
-      petY = petY + 2;
+      goDown();
   }
   if(keyIsDown(LEFT_ARROW)) {
-      petX = petX - 2;
+      goLeft();
   } 
   if(keyIsDown(RIGHT_ARROW)) {
-      petX = petX + 2;
+      goRight();
   } 
   if(keyIsDown(R_KEY) && life <= 0) {
       life = 1000;
@@ -84,13 +84,29 @@ function mousePressed() {
     }
 }
 
-// TODO: put in the library
+// TODO: put all functions below in the library
 function petNearFood(petX, petY, foodX, foodY) {
   return (petX < foodX + 20 && petX > foodX - 20 && petY < foodY + 20 && petY > foodY - 20);
 }
 
-// put in library. 'r''s key code is 82
+// 'r''s key code is 82
 var R_KEY = 82;
+
+function goUp() {
+  petY = petY - 2;
+}
+
+function goDown() {
+  petY = petY + 2;
+}
+
+function goLeft() {
+  petX = petX - 2;
+}
+
+function goRight() {
+  petX = petX + 2;
+}
 
 // have a list of colors that the girls can use (I can't find a complete list..._
 // "pink"
