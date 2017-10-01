@@ -18,6 +18,10 @@ function draw() {
   image(petImage, petX, petY, 80, 70);
   
   if(keyIsDown(UP_ARROW)) {
-      petY = petY - 2;
+      goUp();
   }
+  
+  function goUp() {
+  petY = petY - 2;
+}
 }
