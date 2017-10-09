@@ -1,15 +1,15 @@
-var petImage;
-var foodImage;
+let petImage;
+let foodImage;
 
 // the pet coordinates, start in center of screen
-var petX = 200;
-var petY = 200;
+let petX = 200;
+let petY = 200;
 
 // the food coordinates being >400 means food is unavailable
-var foodX = 404;
-var foodY = 404;
+let foodX = 404;
+let foodY = 404;
 
-var life = 1000;
+let life = 1000;
 
 function preload() {
   // TODO: have some images downloaded and available for the girls to use
@@ -17,7 +17,7 @@ function preload() {
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
 }
-  
+
 
 function setup() {
   createCanvas(400, 400);
@@ -26,7 +26,7 @@ function setup() {
 
 function draw() {
   background("lightblue");
-  
+
   // arrow keys for movement, r to restart
   if(keyIsDown(UP_ARROW)) {
       goUp();
@@ -36,23 +36,23 @@ function draw() {
   }
   if(keyIsDown(LEFT_ARROW)) {
       goLeft();
-  } 
+  }
   if(keyIsDown(RIGHT_ARROW)) {
       goRight();
-  } 
+  }
   if(keyIsDown(R_KEY) && life <= 0) {
       life = 1000;
   }
-  
+
   // write the "Life: " string
   fill("black");
   textSize(20);
   text("Life: ", 10, 27);
-   
+
   // update box showing amount of life left
   fill("lightgreen");
   rect(50, 10, life/10, 20);
-  
+
   // if life is <= 0, the game is over
   // otherwise update the pet's position
   if (life <= 0) {
@@ -62,12 +62,12 @@ function draw() {
     image(petImage, petX, petY, 80, 70);
     life = life - 1;
   }
-  
+
   // if the food is still available, draw it
   if (foodX <= 400 && foodY <= 400) {
     image(foodImage, foodX, foodY, 30, 50);
   }
-  
+
   // if the pet is near the food, give it more life and make the food disappear
   if (petNearFood(petX, petY, foodX, foodY)) {
     life = life + 250;
@@ -90,7 +90,7 @@ function petNearFood(petX, petY, foodX, foodY) {
 }
 
 // 'r''s key code is 82
-var R_KEY = 82;
+let R_KEY = 82;
 
 function goUp() {
   petY = petY - 2;
