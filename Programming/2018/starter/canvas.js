@@ -67,7 +67,7 @@ function draw() {
 }
 
 function goUp() {
-  petY = petY - 2;
+  petY = petY - petSpeed;
 }
 
 function goDown() {
