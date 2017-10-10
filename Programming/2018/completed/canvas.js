@@ -1,118 +1,162 @@
+/*------------------------- Variables ----------------------------------------*/
+// We need these variables throughout the file, that's why we declare them here!
 let petImage;
 let foodImage;
 
-// the pet coordinates, start in center of screen
-let petX = 200;
-let petY = 200;
+// Game screen size
+let width = 400;
+let height = 400;
 
-// the food coordinates being >400 means food is unavailable
-let foodX = 404;
-let foodY = 404;
+// Pet's X and Y positions on the screen
+let petX = width/2;
+let petY = height/2;
 
+// Size of the pet
+let petWidth = 80;
+let petHeight = 70;
+// Moving speed of pet
+let petSpeed = 2;
+
+// At the beginning, food is not available
+let foodAvailable = false;
+// The food's positions
+let foodX;
+let foodY;
+// Size of the food
+let foodWidth = 30;
+let foodHeight = 50;
+
+// Amount of life
 let life = 1000;
 
+// key code of R is 82
+let R_KEY = 82;
+
+/*------------------------- Functions ----------------------------------------*/
+
+// We load the pet and food images here
 function preload() {
-  // TODO: have some images downloaded and available for the girls to use
-  // teach them how to set their own if they have time (they probably won't)
+  // If you want to use other images, put them in the images folder
+  // and change the panda.png part to be the image file name
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
 }
 
-
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(width, height);
   imageMode(CENTER);
 }
 
 function draw() {
+  // Draw a lightblue background
   background("lightblue");
+  // Draw how much life is left on the top left corner
+  displayLife();
 
-  // arrow keys for movement, r to restart
+  // keyIsDown takes in a key code.
+  // A list of key codes is available on your info sheet!
+  // If an arrow key is pressed, we want our pet to go in that direction!
   if(keyIsDown(UP_ARROW)) {
       goUp();
-  }
-  if (keyIsDown(DOWN_ARROW)) {
+  } else if (keyIsDown(DOWN_ARROW)) {
       goDown();
-  }
-  if(keyIsDown(LEFT_ARROW)) {
+  } else if(keyIsDown(LEFT_ARROW)) {
       goLeft();
-  }
-  if(keyIsDown(RIGHT_ARROW)) {
+  } else if(keyIsDown(RIGHT_ARROW)) {
       goRight();
   }
-  if(keyIsDown(R_KEY) && life <= 0) {
-      life = 1000;
+
+  // If there is no life left, the game is over
+  if (isGameOver()) {
+    displayGameOverMessage();
+    // If key r is pressed, we reset the game to restart
+    if(keyIsDown(R_KEY)) {
+        life = 1000;
+        foodAvailable = false;
+    }
   }
 
-  // write the "Life: " string
-  fill("black");
-  textSize(20);
-  text("Life: ", 10, 27);
+  // If food is available, draw food
+  if (foodAvailable) {
+    image(foodImage, foodX, foodY, foodWidth, foodHeight);
+  }
 
-  // update box showing amount of life left
-  fill("lightgreen");
-  rect(50, 10, life/10, 20);
-
-  // if life is <= 0, the game is over
-  // otherwise update the pet's position
-  if (life <= 0) {
-    fill("black");
-    text("Game over, press R to restart", 70, 190);
-  } else {
-    image(petImage, petX, petY, 80, 70);
+  // If there is still life left, draw pet and decrease amount of life
+  if (!isGameOver()) {
+    image(petImage, petX, petY, petWidth, petHeight);
     life = life - 1;
   }
 
-  // if the food is still available, draw it
-  if (foodX <= 400 && foodY <= 400) {
-    image(foodImage, foodX, foodY, 30, 50);
-  }
-
   // if the pet is near the food, give it more life and make the food disappear
-  if (petNearFood(petX, petY, foodX, foodY)) {
+  if (foodAvailable && petNearFood()) {
     life = life + 250;
-    foodX = 404;
-    foodY = 404;
+    foodAvailable = false;
   }
 }
-
-// if there isn't food already available, put food where you click
-function mousePressed() {
-  if(foodX >= 400 && foodY >= 400) {
-        foodX = mouseX;
-        foodY = mouseY;
-    }
-}
-
-// TODO: put all functions below in the library
-function petNearFood(petX, petY, foodX, foodY) {
-  return (petX < foodX + 20 && petX > foodX - 20 && petY < foodY + 20 && petY > foodY - 20);
-}
-
-// 'r''s key code is 82
-let R_KEY = 82;
 
 function goUp() {
-  petY = petY - 2;
+  petY = petY - petSpeed;
 }
 
 function goDown() {
-  petY = petY + 2;
+  petY = petY + petSpeed;
 }
 
 function goLeft() {
-  petX = petX - 2;
+  petX = petX - petSpeed;
 }
 
 function goRight() {
-  petX = petX + 2;
+  petX = petX + petSpeed;
 }
 
-// have a list of colors that the girls can use (I can't find a complete list..._
-// "pink"
-// "green"
-// "lightgreen"
-// "purple"
-// "blue"
-// "lightblue"
-// "black"
+// This function returns true when gmae is over, false when not.
+function isGameOver() {
+  return life <= 0;
+}
+
+// When mouse is clicked, we want to draw the food where we click
+function mousePressed() {
+  foodAvailable = true;
+  foodX = mouseX;
+  foodY = mouseY;
+}
+
+/** ------------------------ Helper functions -------------------------- */
+// We have some functions here completed for you to use. You don't need to
+// do anything to this part!
+
+/**
+  * Use this function to display text on screen
+  * color: color of the text. You can refer to the list of colors we provide
+  *        on the info sheet.
+  * fontSize: a number that represents size of the text
+  * message: the text that you want to display
+  * xPos: x coordinate of the text
+  * yPos: y coordinate of the text
+  */
+function displayText(color, fontSize, message, xPos, yPos) {
+  fill(color);
+  textSize(fontSize);
+  text(message, xPos, yPos);
+}
+
+function petNearFood() {
+  return (petX < foodX + 20 && petX > foodX - 20
+    && petY < foodY + 20 && petY > foodY - 20);
+}
+
+// Display how much life is left on the top left corner
+function displayLife() {
+  // Display the "Life: " text
+  displayText("black", 20, "Life: ", 10, 27);
+
+  // Draw the box showing amount of life left
+  fill("lightgreen");
+  rect(50, 10, life/10, 20);
+}
+
+// Display the game over message
+function displayGameOverMessage() {
+  displayText("black", 25, "Game over, press R to restart", 30, 190);
+}

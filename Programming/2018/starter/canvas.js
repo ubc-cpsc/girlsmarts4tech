@@ -1,5 +1,7 @@
-// We need this variable throughout the file, that's why we declare it here!
+/*------------------------- Variables ----------------------------------------*/
+// We need these variables throughout the file, that's why we declare them here!
 let petImage;
+let foodImage;
 
 // Let's set up the game screen size
 let width = 400;
@@ -12,15 +14,32 @@ let petY = height/2;
 // We also decide on the size of the pet
 let petWidth = 80;
 let petHeight = 70;
+// Moving speed of pet
+let petSpeed = 2;
+
+// At the beginning, food is not available
+let foodAvailable = false;
+// The food's positions
+let foodX;
+let foodY;
+// Size of the food
+let foodWidth = 30;
+let foodHeight = 50;
 
 // Amount of life
 let life = 1000;
+
+// key code of R is 82
+let R_KEY = 82;
+
+/*------------------------- Functions ----------------------------------------*/
 
 // We load any images we want to use here
 function preload() {
   // If you want to use other images, put them in the images folder
   // and change the panda.png part to be the image file name
   petImage = loadImage("images/panda.png");
+  foodImage = loadImage("images/bamboo.png");
 }
 
 function setup() {
@@ -31,7 +50,7 @@ function setup() {
 function draw() {
   // Draw a lightblue background
   background("lightblue");
-  // Draw the panda image
+  // Draw the panda image. Remove me when you are doing draw pet!
   image(petImage, petX, petY, petWidth, petHeight);
   // Draw how much life is left on the top left corner
   displayLife();
@@ -39,9 +58,12 @@ function draw() {
   // keyIsDown takes in a key code.
   // A list of key codes is available on your info sheet!
   // If the up arrow is pressed, we want our pet to go up!
+  // TODO What about other arrow keys?
   if (keyIsDown(UP_ARROW)) {
     goUp();
   }
+
+  // TODO
 }
 
 function goUp() {
@@ -60,7 +82,18 @@ function goRight() {
   // TODO
 }
 
-/** ------------------------ Helper functions -------------------------- */
+function isGameOver() {
+  // TODO
+}
+
+// When mouse is clicked, we want to draw the food where we click
+function mousePressed() {
+  // We have food now!
+  foodAvailable = true;
+  // TODO make food appear where mouse is pressed
+}
+
+/*----------------------------- Helper functions -----------------------------*/
 // We have some functions here completed for you to use. You don't need to
 // do anything to this part!
 
@@ -92,4 +125,9 @@ function displayLife() {
   // Draw the box showing amount of life left
   fill("lightgreen");
   rect(50, 10, life/10, 20);
+}
+
+// Display the game over message
+function displayGameOverMessage() {
+  displayText("black", 25, "Game over, press R to restart", 30, 190);
 }
