@@ -16,13 +16,19 @@ to install all the dependencies.
 
 In order to load the images and display them on a page in a browser locally, we need a web server to serve the images. Otherwise, the images won't be served.
 
-To start a server easily, we use [php's built-in server](http://php.net/manual/en/features.commandline.webserver.php). Make sure you cd to the directory that contains `index.html`, then run:
+To start a server easily, we use [http-server package](https://www.npmjs.com/package/http-server). Make sure you cd to the directory that contains `index.html` (which is either the completed folder or the starter folder), then run:
 
 ```bash
-$ php -S localhost:8888
+$ npm run mac
 ```
 
-and go to [localhost:8888](localhost:8888) to view the page.
+if on mac,
+
+```bash
+$ npm run win
+```
+
+if on windows, and go to [localhost:8888](localhost:8888) to view the page.
 
 ## ESLint
 

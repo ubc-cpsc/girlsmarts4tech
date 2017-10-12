@@ -5,10 +5,13 @@
   "main": "canvas.js",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^4.4.1"
+    "eslint": "^4.4.1",
+    "http-server": "^0.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "win": ".\\node_modules\\.bin\\http-server.cmd ./ -p 8888",
+    "mac": "./node_modules/.bin/http-server ./ -p 8888"
   },
   "author": "",
   "license": "ISC"
