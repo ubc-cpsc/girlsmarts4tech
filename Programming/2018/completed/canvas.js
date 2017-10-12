@@ -66,16 +66,6 @@ function draw() {
       goRight();
   }
 
-  // If there is no life left, the game is over
-  if (isGameOver()) {
-    displayGameOverMessage();
-    foodAvailable = false;
-    // If key r is pressed, we reset the game to restart
-    if(keyIsDown(R_KEY)) {
-        life = 1000;
-    }
-  }
-
   // If food is available, draw food
   if (foodAvailable) {
     image(foodImage, foodX, foodY, foodWidth, foodHeight);
@@ -91,6 +81,16 @@ function draw() {
   if (foodAvailable && petNearFood()) {
     life = life + 250;
     foodAvailable = false;
+  }
+
+  // If there is no life left, the game is over
+  if (isGameOver()) {
+    displayGameOverMessage();
+    foodAvailable = false;
+    // If key r is pressed, we reset the game to restart
+    if(keyIsDown(R_KEY)) {
+        life = 1000;
+    }
   }
 }
 
