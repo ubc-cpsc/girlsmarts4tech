@@ -112,7 +112,7 @@ function displayText(color, fontSize, message, xPos, yPos) {
   text(message, xPos, yPos);
 }
 
-function petNearFood(petX, petY, foodX, foodY) {
+function petNearFood() {
   return (petX < foodX + 20 && petX > foodX - 20
     && petY < foodY + 20 && petY > foodY - 20);
 }
