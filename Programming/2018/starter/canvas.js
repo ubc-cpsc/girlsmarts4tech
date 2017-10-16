@@ -58,7 +58,7 @@ function draw() {
   // keyIsDown takes in a key code.
   // A list of key codes is available on your info sheet!
   // If the up arrow is pressed, we want our pet to go up!
-  // TODO What about other arrow keys?
+  // TODO (slide 24) What about other arrow keys?
   if (keyIsDown(UP_ARROW)) {
     goUp();
   }
