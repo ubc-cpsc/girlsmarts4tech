@@ -50,8 +50,8 @@ function setup() {
 function draw() {
   // Draw a lightblue background
   background("lightblue");
-  // Draw the panda image. Remove me when you are doing draw pet!
-  image(petImage, petX, petY, petWidth, petHeight);
+  // TODO (slide 12): Draw the panda image. Remove me when you are doing draw pet!
+
   // Draw how much life is left on the top left corner
   displayLife();
 
@@ -67,7 +67,7 @@ function draw() {
 }
 
 function goUp() {
-  petY = petY - petSpeed;
+  // TODO (slide 15)
 }
 
 function goDown() {
