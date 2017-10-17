@@ -17,8 +17,8 @@ let petHeight = 70;
 // Moving speed of pet
 let petSpeed = 2;
 
-// At the beginning, food is not available
-let foodAvailable = false;
+// At the beginning when game just starts, food is available
+let foodAvailable = true;
 // The food's positions
 let foodX;
 let foodY;
@@ -57,10 +57,15 @@ function draw() {
 
   // keyIsDown takes in a key code.
   // A list of key codes is available on your info sheet!
-  // If the up arrow is pressed, we want our pet to go up!
-  // TODO (slide 24) What about other arrow keys?
-  if (keyIsDown(UP_ARROW)) {
-    goUp();
+  // If an arrow key is pressed, we want our pet to go in that direction!
+  if(keyIsDown(UP_ARROW)) {
+      goUp();
+  } else if (keyIsDown(DOWN_ARROW)) {
+      goDown();
+  } else if(keyIsDown(LEFT_ARROW)) {
+      goLeft();
+  } else if(keyIsDown(RIGHT_ARROW)) {
+      goRight();
   }
 
   // TODO
@@ -88,9 +93,12 @@ function isGameOver() {
 
 // When mouse is clicked, we want to draw the food where we click
 function mousePressed() {
-  // We have food now!
-  foodAvailable = true;
-  // TODO make food appear where mouse is pressed
+  // First, we need to make sure game is not over yet
+  if (isGameOver() === false) {
+    // We have food now!
+    foodAvailable = true;
+    // TODO make food appear where mouse is pressed
+  }
 }
 
 /*----------------------------- Helper functions -----------------------------*/
@@ -114,7 +122,7 @@ function displayText(color, fontSize, message, xPos, yPos) {
 
 function petNearFood() {
   return (petX < foodX + 20 && petX > foodX - 20
-    && petY < foodY + 20 && petY > foodY - 20);
+    && petY < foodY + 20 && petY > foodY - 20) && foodAvailable;
 }
 
 // Display how much life is left on the top left corner

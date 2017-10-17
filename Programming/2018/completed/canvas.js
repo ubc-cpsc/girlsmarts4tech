@@ -17,8 +17,8 @@ let petHeight = 70;
 // Moving speed of pet
 let petSpeed = 2;
 
-// At the beginning, food is not available
-let foodAvailable = false;
+// At the beginning when game just starts, food is available
+let foodAvailable = true;
 // The food's positions
 let foodX;
 let foodY;
@@ -72,13 +72,13 @@ function draw() {
   }
 
   // If there is still life left, draw pet and decrease amount of life
-  if (!isGameOver()) {
+  if (!isGameOver()) { // or, isGameOver() === false
     image(petImage, petX, petY, petWidth, petHeight);
     life = life - 1;
   }
 
   // if the pet is near the food, give it more life and make the food disappear
-  if (foodAvailable && petNearFood()) {
+  if (petNearFood()) {
     life = life + 250;
     foodAvailable = false;
   }
@@ -117,9 +117,13 @@ function isGameOver() {
 
 // When mouse is clicked, we want to draw the food where we click
 function mousePressed() {
-  foodAvailable = true;
-  foodX = mouseX;
-  foodY = mouseY;
+  // First, we need to make sure game is not over yet
+  if (isGameOver() === false) {
+    // We have food now!
+    foodAvailable = true;
+    foodX = mouseX;
+    foodY = mouseY;
+  }
 }
 
 /** ------------------------ Helper functions -------------------------- */
@@ -143,7 +147,7 @@ function displayText(color, fontSize, message, xPos, yPos) {
 
 function petNearFood() {
   return (petX < foodX + 20 && petX > foodX - 20
-    && petY < foodY + 20 && petY > foodY - 20);
+    && petY < foodY + 20 && petY > foodY - 20) && foodAvailable;
 }
 
 // Display how much life is left on the top left corner
