@@ -1,4 +1,4 @@
-# Starter Project: Pet
+# Starter Project: Hungry Panda
 
 This README file explains the technologies used in this project.
 
