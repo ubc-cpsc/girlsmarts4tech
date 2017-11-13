@@ -96,19 +96,19 @@ function draw() {
 }
 
 function goUp() {
-  petY = petY - petSpeed;
+  petY = Math.max(petY - petSpeed, 0);
 }
 
 function goDown() {
-  petY = petY + petSpeed;
+  petY = Math.min(petY + petSpeed, height);
 }
 
 function goLeft() {
-  petX = petX - petSpeed;
+  petX = Math.max(petX - petSpeed, 0);
 }
 
 function goRight() {
-  petX = petX + petSpeed;
+  petX = Math.min(petX + petSpeed, width);
 }
 
 // This function returns true when gmae is over, false when not.
