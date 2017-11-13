@@ -153,11 +153,11 @@ function petNearFood() {
 // Display how much life is left on the top left corner
 function displayLife() {
   // Display the "Life: " text
-  displayText("black", 20, "Life: ", 10, 27);
+  displayText("black", 20, `Life: ${life}`, 10, 27);
 
   // Draw the box showing amount of life left
-  fill("lightgreen");
-  rect(50, 10, life/10, 20);
+  fill("lightgreen"); // Change this to change the color of life bar
+  rect(100, 10, life/10, 20);
 }
 
 // Display the game over message
