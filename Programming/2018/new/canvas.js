@@ -28,6 +28,7 @@ let foodHeight = 50;
 
 // Amount of life
 let life = 1000;
+let maxLife = 1500;
 
 // key code of R is 82
 let R_KEY = 82;
@@ -79,7 +80,7 @@ function draw() {
 
   // if the pet is near the food, give it more life and make the food disappear
   if (petNearFood()) {
-    life = life + 250;
+    life = Math.min(life + 250, maxLife);
     foodAvailable = false;
   }
 
