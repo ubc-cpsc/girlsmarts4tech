@@ -1,0 +1,19 @@
+{
+  "name": "gs4tp2018-completed",
+  "version": "1.0.0",
+  "description": "GIRLsmarts4tech 2018 Programming Activity",
+  "main": "canvas.js",
+  "repository": "https://github.com/ubc-cpsc/girlsmarts4tech",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "serve": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "win": ".\\node_modules\\.bin\\serve.cmd ./ -p 8888",
+    "mac": "./node_modules/.bin/serve ./ -p 8888"
+  },
+  "author": "",
+  "license": "ISC"
+}
