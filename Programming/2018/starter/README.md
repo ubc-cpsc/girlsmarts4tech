@@ -1,10 +1,14 @@
 # Starter Project: Hungry Panda
 
-This README file explains the technologies used in this project.
+This README file explains how to set up this project on your personal machine. You can play the game here: https://ubc-cpsc.github.io/girlsmarts4tech/Programming/2018/completed/.
+
+## Clone this repo
+
+Go to https://github.com/ubc-cpsc/girlsmarts4tech and click the green button "Clone or download", then either clone this repo or download ZIP.
 
 ## Dependencies
 
-Make sure you're at this current folder, then run
+Install [npm](https://www.npmjs.com/get-npm) on your machine. Then, make sure you're in this current folder, then run
 
 ```bash
 $ npm install
