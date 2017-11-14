@@ -46,6 +46,7 @@ function preload() {
 function setup() {
   createCanvas(width, height);
   imageMode(CENTER);
+  randomizeFood(); // Initialize food coordinate
 }
 
 function draw() {
@@ -81,7 +82,7 @@ function draw() {
   // if the pet is near the food, give it more life and make the food disappear
   if (petNearFood()) {
     life = Math.min(life + 250, maxLife);
-    foodAvailable = false;
+    randomizeFood();
   }
 
   // If there is no life left, the game is over
@@ -91,6 +92,7 @@ function draw() {
     // If key r is pressed, we reset the game to restart
     if(keyIsDown(R_KEY)) {
         life = 1000;
+        foodAvailable = true;
     }
   }
 }
@@ -127,6 +129,17 @@ function mousePressed() {
   }
 }
 
+// Return a random number between min and max
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// Assign a random coordinate for food
+function randomizeFood() {
+  foodX = getRandomNumber(foodWidth/2, width - foodWidth/2);
+  foodY = getRandomNumber(foodHeight/2, width - foodHeight/2);
+}
+
 /** ------------------------ Helper functions -------------------------- */
 // We have some functions here completed for you to use. You don't need to
 // do anything to this part!
@@ -147,8 +160,8 @@ function displayText(color, fontSize, message, xPos, yPos) {
 }
 
 function petNearFood() {
-  return (petX < foodX + 20 && petX > foodX - 20
-    && petY < foodY + 20 && petY > foodY - 20) && foodAvailable;
+  return petX < foodX + 20 && petX > foodX - 20
+    && petY < foodY + 20 && petY > foodY - 20;
 }
 
 // Display how much life is left on the top left corner
