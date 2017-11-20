@@ -2,6 +2,9 @@
 // We need these variables throughout the file, that's why we declare them here!
 let petImage;
 let foodImage;
+let bombImage;
+let garbageImage;
+let blackcrossImage;
 
 // Game screen size
 let width = 400;
@@ -33,6 +36,18 @@ let maxLife = 1500;
 // key code of R is 82
 let R_KEY = 82;
 
+class Item {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  // Return true if a coordinate is near the item, false otherwise
+  near(x, y) {
+
+  }
+}
+
 /*------------------------- Functions ----------------------------------------*/
 
 // We load the pet and food images here
@@ -41,6 +56,9 @@ function preload() {
   // and change the panda.png part to be the image file name
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
+  bombImage = loadImage("images/bomb.png");
+  garbageImage = loadImage("images/garbage.png");
+  blackcrossImage = loadImage("images/blackcross.png");
 }
 
 function setup() {
