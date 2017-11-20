@@ -10,11 +10,13 @@ Go to https://github.com/ubc-cpsc/girlsmarts4tech/releases/latest and download s
 
 We will need to use a few things. When installing, install the version that is stable, or recommended for most users. Also, when you simply click download most of the time your system will be detected and a suitable version will be automatically installed, so don't worry too much. When you have to choose a version, make sure you download the version for your system (Mac, Windows, or Linux).
 
-- Install [Visual Studio Code](https://code.visualstudio.com/)
-
 - Install [npm](https://www.npmjs.com/get-npm) on your machine by opening the [node.js](https://nodejs.org/en/) page
 
 - Install [Chrome](https://www.google.com/chrome/browser/desktop/index.html)
+
+- Install [Visual Studio Code](https://code.visualstudio.com/)
+
+- Install ESLint package: in Visual Studio Code, go to View -> Extensions, and then search ESLint, click the first result, click install, and click reload when installation finishes
 
 ## Set up and start coding
 
