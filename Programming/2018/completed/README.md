@@ -4,7 +4,7 @@ This README file explains how to set up this project on your personal machine. Y
 
 ## Download project
 
-Go to https://github.com/ubc-cpsc/girlsmarts4tech/releases/latest and download starter.zip or completed.zip.
+Go to https://github.com/ubc-cpsc/girlsmarts4tech/releases/latest and download starter.zip or completed.zip. Open the zip file by double clicking it if you are on Mac (a folder with the same name should appear). If you are on Windows, right click on the zip file and choose Extract All (see [instructions](https://support.microsoft.com/en-us/help/14200/windows-compress-uncompress-zip-files)).
 
 ## Required software
 
