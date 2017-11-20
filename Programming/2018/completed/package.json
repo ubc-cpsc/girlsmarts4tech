@@ -11,8 +11,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "win": ".\\node_modules\\.bin\\serve.cmd ./ -p 8888",
-    "mac": "./node_modules/.bin/serve ./ -p 8888"
+    "win": ".\\node_modules\\.bin\\serve.cmd ./ -p 8888 -o",
+    "mac": "./node_modules/.bin/serve ./ -p 8888 -o"
   },
   "author": "",
   "license": "ISC"
