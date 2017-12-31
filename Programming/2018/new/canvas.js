@@ -37,18 +37,65 @@ let maxLife = 1500;
 let R_KEY = 82;
 
 class Item {
-  constructor(x, y) {
+  constructor(x = 0, y = 0, imagePath = "", image = null, width = 0, height = 0, isAvailable = true) {
     this.x = x;
     this.y = y;
+    this.imagePath = imagePath;
+    this.image = image;
+    this.width = width;
+    this.height = height;
+    this.isAvailable = isAvailable;
   }
 
-  // Return true if a coordinate is near the item, false otherwise
-  near(x, y) {
+  loadImage(imagePath) {
+    this.imagePath = imagePath;
+    this.image = loadImage(this.imagePath);
+  }
 
+  setWidth(width) {
+    this.width = width;
+  }
+
+  setHeight(height) {
+    this.height = height;
+  }
+
+  setX(x) {
+    this.x = x;
+  }
+
+  setY(y) {
+    this.y = y;
+  }
+  
+  setToAvailable() {
+    this.isAvailable = true;
+  }
+
+  setToUnavailable() {
+    this.isAvailable = false;
+  }
+
+  isAvailable() {
+    return this.isAvailable;
+  }
+
+  draw() {
+    image(this.image, this.x, this.y, this.width, this.height);
+  }
+
+  // Return true if a coordinate with given x and y is near the item, false otherwise
+  near(x, y) {
+    return x < this.x + 20 && x > this.x - 20
+      && y < this.y + 20 && y > this.y - 20;  // TODO figure out why 20
   }
 }
 
 /*------------------------- Functions ----------------------------------------*/
+
+function createItems() {
+  bamboo = new Item();
+}
 
 // We load the pet and food images here
 function preload() {
@@ -56,6 +103,8 @@ function preload() {
   // and change the panda.png part to be the image file name
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
+  createItems();
+  bamboo.loadImage("images/bamboo.png");
   bombImage = loadImage("images/bomb.png");
   garbageImage = loadImage("images/garbage.png");
   blackcrossImage = loadImage("images/blackcross.png");
@@ -65,6 +114,7 @@ function setup() {
   createCanvas(width, height);
   imageMode(CENTER);
   randomizeFood(); // Initialize food coordinate
+  randomizeItemCoordinates(bamboo);
 }
 
 function draw() {
@@ -87,8 +137,11 @@ function draw() {
   }
 
   // If food is available, draw food
-  if (foodAvailable) {
-    image(foodImage, foodX, foodY, foodWidth, foodHeight);
+  if (bamboo.isAvailable) {
+    bamboo.setWidth(30);
+    bamboo.setHeight(50);
+    bamboo.draw();
+    //image(foodImage, foodX, foodY, foodWidth, foodHeight);
   }
 
   // If there is still life left, draw pet and decrease amount of life
@@ -98,19 +151,20 @@ function draw() {
   }
 
   // if the pet is near the food, give it more life and make the food disappear
-  if (petNearFood()) {
+  if (bamboo.near(petX, petY)) {
     life = Math.min(life + 250, maxLife);
-    randomizeFood();
+    // randomizeFood();
+    randomizeItemCoordinates(bamboo);
   }
 
   // If there is no life left, the game is over
   if (isGameOver()) {
     displayGameOverMessage();
-    foodAvailable = false;
+    bamboo.setToUnavailable();
     // If key r is pressed, we reset the game to restart
     if(keyIsDown(R_KEY)) {
-        life = 1000;
-        foodAvailable = true;
+      life = 1000;
+      bamboo.setToAvailable();
     }
   }
 }
@@ -150,6 +204,11 @@ function mousePressed() {
 // Return a random number between min and max
 function getRandomNumber(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function randomizeItemCoordinates(item) {
+  item.setX(getRandomNumber(foodWidth / 2, width - foodWidth / 2));
+  item.setY(getRandomNumber(foodHeight / 2, width - foodHeight / 2));
 }
 
 // Assign a random coordinate for food
