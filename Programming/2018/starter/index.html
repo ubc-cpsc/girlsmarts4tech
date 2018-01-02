@@ -5,7 +5,17 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.js"></script>
+    <div  id="errorBox">
+    	<p>An error occured inside your game. Go back to the editor to see what it is.</p>
+    </div>
+    <script>
+    	window.onerror = function (msg, url, lineNo, columnNo, error) {
+    		document.getElementById('errorBox').style.display = 'block';
+  			return false;
+		}
+	</script>
     <script src="canvas.js"></script> <!-- this line is not needed on codepen-->
+
   </head>
   <body>
   </body>
