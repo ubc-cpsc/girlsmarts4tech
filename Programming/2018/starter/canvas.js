@@ -38,8 +38,8 @@ let R_KEY = 82;
 function preload() {
   // If you want to use other images, put them in the images folder
   // and change the panda.png part to be the image file name
-  petImage = loadImage("images/panda.png");
-  foodImage = loadImage("images/bamboo.png");
+  petImage = loadImage("images/animal/panda.png");
+  foodImage = loadImage("images/food/bamboo.png");
 }
 
 function setup() {

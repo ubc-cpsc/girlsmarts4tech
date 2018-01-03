@@ -2,6 +2,15 @@ html, body {
   height: 100%;
 }
 
+#errorBox{
+	display: none;
+	position: fixed;
+	top: 50%;
+	width: 100%;
+	font-size: 20px;
+	background-color: red;
+}
+
 body {
   margin: 0;
   display: flex;
