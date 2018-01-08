@@ -1,10 +1,8 @@
 /*------------------------- Variables ----------------------------------------*/
 // We need these variables throughout the file, that's why we declare them here!
 let petImage;
-let foodImage;
-let bombImage;
-let garbageImage;
-let blackcrossImage;
+let bambooImg;
+let bamboo;
 
 // Game screen size
 let width = 400;
@@ -20,11 +18,6 @@ let petHeight = 70;
 // Moving speed of pet
 let petSpeed = 2;
 
-// At the beginning when game just starts, food is available
-let foodAvailable = true;
-// The food's positions
-let foodX;
-let foodY;
 // Size of the food
 let foodWidth = 30;
 let foodHeight = 50;
@@ -35,15 +28,11 @@ let maxLife = 1500;
 
 // key code of R is 82
 let R_KEY = 82;
-// generic class, can have a food and garbage class extending it
+// generic class, TODO can have a food and garbage class extending it
 class Item {
-  constructor(x = 0, y = 0, imageObj = null) {
+  constructor(imageObj, x = 0, y = 0) {
     this.x = x;
     this.y = y;
-    this.imageObj = imageObj;
-  }
-
-  setImage(imageObj) {
     this.imageObj = imageObj;
   }
 
@@ -55,20 +44,10 @@ class Item {
     this.y = y;
   }
 
-  setToAvailable() {
-    this.isAvailable = true;
-  }
-
-  setToUnavailable() {
-    this.isAvailable = false;
-  }
-
-  isAvailable() {
-    return this.isAvailable;
-  }
-
   draw() {
-    image(this.imageObj.image, this.x, this.y, this.imageObj.width, this.imageObj.height);
+    if (!isGameOver()) {
+      image(this.imageObj.image, this.x, this.y, this.imageObj.width, this.imageObj.height);
+    }
   }
 
   // Return true if a coordinate with given x and y is near the item, false otherwise
@@ -90,15 +69,12 @@ class ImageObject {
   }
 }
 
-// TODO an image class which handles the loading of the image, width, height etc
-
 /*------------------------- Functions ----------------------------------------*/
 
 function createItems() {
-  bambooImg = new ImageObject("images/bamboo.png", 30, 50); // global variable
+  bambooImg = new ImageObject("images/bamboo.png", foodWidth, foodHeight); // global variable
   bambooImg.loadImage();
-  bamboo = new Item(); // global variable
-  bamboo.setImage(bambooImg);
+  bamboo = new Item(bambooImg); // global variable
 }
 
 // We load the pet and food images here
@@ -106,11 +82,7 @@ function preload() {
   // If you want to use other images, put them in the images folder
   // and change the panda.png part to be the image file name
   petImage = loadImage("images/panda.png");
-  foodImage = loadImage("images/bamboo.png");
   createItems();
-  bombImage = loadImage("images/bomb.png");
-  garbageImage = loadImage("images/garbage.png");
-  blackcrossImage = loadImage("images/blackcross.png");
 }
 
 function setup() {
@@ -139,11 +111,7 @@ function draw() {
       goRight();
   }
 
-  // If food is available, draw food
-  if (bamboo.isAvailable) { // TODO put it in draw
-    bamboo.draw();
-    //image(foodImage, foodX, foodY, foodWidth, foodHeight);
-  }
+  bamboo.draw();
 
   // If there is still life left, draw pet and decrease amount of life
   if (!isGameOver()) { // or, isGameOver() === false
@@ -154,18 +122,17 @@ function draw() {
   // if the pet is near the food, give it more life and make the food disappear
   if (bamboo.near(petX, petY)) {
     life = Math.min(life + 250, maxLife);
-    // randomizeFood();
+    bamboo = new Item(bambooImg); // make a new bamboo as the old one is eaten
     randomizeItemCoordinates(bamboo);
   }
 
   // If there is no life left, the game is over
   if (isGameOver()) {
     displayGameOverMessage();
-    bamboo.setToUnavailable();
     // If key r is pressed, we reset the game to restart
     if(keyIsDown(R_KEY)) {
       life = 1000;
-      bamboo.setToAvailable();
+      bamboo = new Item(bambooImg);
     }
   }
 }
@@ -196,7 +163,6 @@ function mousePressed() {
   // First, we need to make sure game is not over yet
   if (isGameOver() === false) {
     // We have food now!
-    foodAvailable = true;
     foodX = mouseX;
     foodY = mouseY;
   }
@@ -235,11 +201,6 @@ function displayText(color, fontSize, message, xPos, yPos) {
   fill(color);
   textSize(fontSize);
   text(message, xPos, yPos);
-}
-
-function petNearFood() {
-  return petX < foodX + 20 && petX > foodX - 20
-    && petY < foodY + 20 && petY > foodY - 20;
 }
 
 // Display how much life is left on the top left corner
