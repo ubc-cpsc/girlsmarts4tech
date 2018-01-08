@@ -35,29 +35,16 @@ let maxLife = 1500;
 
 // key code of R is 82
 let R_KEY = 82;
-
+// generic class, can have a food and garbage class extending it
 class Item {
-  constructor(x = 0, y = 0, imagePath = "", image = null, width = 0, height = 0, isAvailable = true) {
+  constructor(x = 0, y = 0, imageObj = null) {
     this.x = x;
     this.y = y;
-    this.imagePath = imagePath;
-    this.image = image;
-    this.width = width;
-    this.height = height;
-    this.isAvailable = isAvailable;
+    this.imageObj = imageObj;
   }
 
-  loadImage(imagePath) {
-    this.imagePath = imagePath;
-    this.image = loadImage(this.imagePath);
-  }
-
-  setWidth(width) {
-    this.width = width;
-  }
-
-  setHeight(height) {
-    this.height = height;
+  setImage(imageObj) {
+    this.imageObj = imageObj;
   }
 
   setX(x) {
@@ -67,7 +54,7 @@ class Item {
   setY(y) {
     this.y = y;
   }
-  
+
   setToAvailable() {
     this.isAvailable = true;
   }
@@ -81,7 +68,7 @@ class Item {
   }
 
   draw() {
-    image(this.image, this.x, this.y, this.width, this.height);
+    image(this.imageObj.image, this.x, this.y, this.imageObj.width, this.imageObj.height);
   }
 
   // Return true if a coordinate with given x and y is near the item, false otherwise
@@ -91,10 +78,27 @@ class Item {
   }
 }
 
+class ImageObject {
+  constructor(path, width, height) {
+    this.path = path;
+    this.width = width;
+    this.height = height;
+  }
+
+  loadImage() {
+    this.image = loadImage(this.path);
+  }
+}
+
+// TODO an image class which handles the loading of the image, width, height etc
+
 /*------------------------- Functions ----------------------------------------*/
 
 function createItems() {
-  bamboo = new Item();
+  bambooImg = new ImageObject("images/bamboo.png", 30, 50); // global variable
+  bambooImg.loadImage();
+  bamboo = new Item(); // global variable
+  bamboo.setImage(bambooImg);
 }
 
 // We load the pet and food images here
@@ -104,7 +108,6 @@ function preload() {
   petImage = loadImage("images/panda.png");
   foodImage = loadImage("images/bamboo.png");
   createItems();
-  bamboo.loadImage("images/bamboo.png");
   bombImage = loadImage("images/bomb.png");
   garbageImage = loadImage("images/garbage.png");
   blackcrossImage = loadImage("images/blackcross.png");
@@ -137,9 +140,7 @@ function draw() {
   }
 
   // If food is available, draw food
-  if (bamboo.isAvailable) {
-    bamboo.setWidth(30);
-    bamboo.setHeight(50);
+  if (bamboo.isAvailable) { // TODO put it in draw
     bamboo.draw();
     //image(foodImage, foodX, foodY, foodWidth, foodHeight);
   }
