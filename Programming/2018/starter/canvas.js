@@ -1,3 +1,5 @@
+// Please look at website for what to do next
+
 /*------------------------- Variables ----------------------------------------*/
 // We need these variables throughout the file, that's why we declare them here!
 let petImage;
@@ -36,8 +38,12 @@ let R_KEY = 82;
 
 // We load any images we want to use here
 function preload() {
+  
+  // TODO #0 - CUSTOMIZE YOUR GAME 
+  
   // If you want to use other images, put them in the images folder
   // and change the panda.png part to be the image file name
+  
   petImage = loadImage("images/animal/panda.png");
   foodImage = loadImage("images/food/bamboo.png");
 }
@@ -48,9 +54,13 @@ function setup() {
 }
 
 function draw() {
+  
+  
+  // TODO #0 - CUSTOMIZE YOUR GAME
+  
   // Draw a lightblue background
   background("lightblue");
-  // TODO (slide 12): Draw the panda image. Remove me when you are doing draw pet!
+  //***** TUTORIAL TODO #1 ***** (slide 12): Draw the panda image. 
 
   // Draw how much life is left on the top left corner
   displayLife();
@@ -68,27 +78,61 @@ function draw() {
       goRight();
   }
 
-  // TODO
+  
+  // TODO #4: draw() 
+  
+  
+  
+  // TODO #6: draw() 
+  
+  
+  
+  // TODO #7: draw() 
+  
+  
+  
+  // TODO #8: draw()
+  
+  
+  
+  
+  // BONUS TODO #2 - ask a volunteer for more information
+  
+  // BONUS TODO #3 - ask a volunteer for more information
+  
+  
+  
+  
 }
 
 function goUp() {
-  // TODO (slide 15)
+  // ****** TUTORIAL TODO #2 ****** 
 }
 
+// TODO #1-3: goDown(), goRight(), goLeft()
+
 function goDown() {
-  // TODO
+  
+  // TODO #1
+  
 }
 
 function goLeft() {
-  // TODO
+  
+  // TODO #2
+  
 }
 
 function goRight() {
-  // TODO
+  
+  // TODO #3
+  
 }
 
 function isGameOver() {
-  // TODO
+  
+  // BONUS TODO #1 - ask a volunteer for more information
+  
 }
 
 // When mouse is clicked, we want to draw the food where we click
@@ -97,7 +141,11 @@ function mousePressed() {
   if (isGameOver() === false) {
     // We have food now!
     foodAvailable = true;
-    // TODO make food appear where mouse is pressed
+    
+    
+   // TODO #5: mousePressed(): Goal is to make food appear where mouse is pressed
+    
+    
   }
 }
 
