@@ -58,11 +58,14 @@ function draw() {
   // If an arrow key is pressed, we want our pet to go in that direction!
   if(keyIsDown(UP_ARROW)) {
       goUp();
-  } else if (keyIsDown(DOWN_ARROW)) {
+  } 
+  if(keyIsDown(DOWN_ARROW)) {
       goDown();
-  } else if(keyIsDown(LEFT_ARROW)) {
+  } 
+  if(keyIsDown(LEFT_ARROW)) {
       goLeft();
-  } else if(keyIsDown(RIGHT_ARROW)) {
+  } 
+  if(keyIsDown(RIGHT_ARROW)) {
       goRight();
   }
 
@@ -72,7 +75,7 @@ function draw() {
   }
 
   // If there is still life left, draw pet and decrease amount of life
-  if (!isGameOver()) { // or, isGameOver() === false
+  if (!isGameOver()) { // or, isGameOver() == false
     image(petImage, petX, petY, petWidth, petHeight);
     life = life - 1;
   }
@@ -118,7 +121,7 @@ function isGameOver() {
 // When mouse is clicked, we want to draw the food where we click
 function mousePressed() {
   // First, we need to make sure game is not over yet
-  if (isGameOver() === false) {
+  if (isGameOver() == false) {
     // We have food now!
     foodAvailable = true;
     foodX = mouseX;
