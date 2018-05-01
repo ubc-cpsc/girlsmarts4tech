@@ -56,42 +56,42 @@ function draw() {
   // keyIsDown takes in a key code.
   // A list of key codes is available on your info sheet!
   // If an arrow key is pressed, we want our pet to go in that direction!
-  if(keyIsDown(UP_ARROW)) {
+  if(keyIsDown(UP_ARROW) === true) {
       goUp();
   } 
-  if(keyIsDown(DOWN_ARROW)) {
+  if(keyIsDown(DOWN_ARROW) === true) {
       goDown();
   } 
-  if(keyIsDown(LEFT_ARROW)) {
+  if(keyIsDown(LEFT_ARROW) === true) {
       goLeft();
   } 
-  if(keyIsDown(RIGHT_ARROW)) {
+  if(keyIsDown(RIGHT_ARROW) === true) {
       goRight();
   }
 
   // If food is available, draw food
-  if (foodAvailable) {
+  if (foodAvailable === true) {
     image(foodImage, foodX, foodY, foodWidth, foodHeight);
   }
 
   // If there is still life left, draw pet and decrease amount of life
-  if (!isGameOver()) { // or, isGameOver() == false
+  if (isGameOver() === false) { // or, !isGameOver()
     image(petImage, petX, petY, petWidth, petHeight);
     life = life - 1;
   }
 
   // if the pet is near the food, give it more life and make the food disappear
-  if (petNearFood()) {
+  if (petNearFood() === true) {
     life = life + 250;
     foodAvailable = false;
   }
 
   // If there is no life left, the game is over
-  if (isGameOver()) {
+  if (isGameOver() === true) {
     displayGameOverMessage();
     foodAvailable = false;
     // If key r is pressed, we reset the game to restart
-    if(keyIsDown(R_KEY)) {
+    if(keyIsDown(R_KEY) === true) {
         life = 1000;
     }
   }
@@ -121,7 +121,7 @@ function isGameOver() {
 // When mouse is clicked, we want to draw the food where we click
 function mousePressed() {
   // First, we need to make sure game is not over yet
-  if (isGameOver() == false) {
+  if (isGameOver() === false) {
     // We have food now!
     foodAvailable = true;
     foodX = mouseX;
