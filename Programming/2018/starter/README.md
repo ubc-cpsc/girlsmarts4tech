@@ -38,10 +38,10 @@ We will need to use a few things. When installing, install the version that is s
 
 ## Question
 
-If you have any question, feel free to email Mandy at mandychen@alumni.ubc.ca.
+If you have any questions, feel free to email Sherry at sherry-yxy@alumni.ubc.ca.
 
 ## Copyright
 
 MIT License
 
-Mandy Chen 2017
+Mandy Chen and Sherry Yuan 2018
